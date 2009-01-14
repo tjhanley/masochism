@@ -78,6 +78,9 @@ the `setup!` call if your connection hasn't been initialized, like:
     prepend_before_filter do |controller|
       unless ActiveRecord::Base.connection.is_a? ActiveReload::ConnectionProxy
         ActiveReload::ConnectionProxy.setup!
+        #Any Model you want to inherit MasterDatabase only eg: Session
+        class Session < ActiveReload::MasterDatabase
+        end
       end
     end
 
